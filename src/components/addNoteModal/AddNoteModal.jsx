@@ -24,8 +24,15 @@ const AddNoteModal = () => {
     });
   };
 
+  const onHandleClickOverlay = () => {
+    dispatch({
+      type: "MODAL_NOT_VISIBLE",
+    });
+  };
+
   return (
     <div className={styles.AddNoteModal}>
+      <div className={styles.overlay} onClick={onHandleClickOverlay}></div>
       <form onSubmit={onHandleSubmit} className={styles.modalForm}>
         <input
           className={styles.newNoteInput}

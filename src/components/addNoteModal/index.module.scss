@@ -1,15 +1,19 @@
 .AddNoteModal {
-  position: fixed;
-  bottom: 0;
-  background-color: rgba(59, 45, 58, 0.794);
-  height: 100vh;
-  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1;
 
+  .overlay {
+    position: fixed;
+    bottom: 0;
+    background-color: rgba(59, 45, 58, 0.794);
+    height: 100vh;
+    width: 100vw;
+  }
+
   .modalForm {
+    position: fixed;
     display: flex;
     flex-direction: column;
     gap: 20px;
