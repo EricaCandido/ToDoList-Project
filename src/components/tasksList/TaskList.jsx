@@ -1,17 +1,23 @@
 import { useEffect, useContext } from "react";
 import { Context } from "../../store";
-import { GET } from "../../utils/http";
+// import { GET } from "../../utils/http";
 import Task from "../task/Task";
 import styles from "./index.module.scss";
+import { todos } from "../../mocks/todos.json";
 
 const TasksList = () => {
   const { state, dispatch } = useContext(Context);
 
-  useEffect(() => {
-    GET("todos").then((res) => {
-      dispatch({ type: "SET_TASKS_LIST", payload: res.todos });
-    });
-  }, []);
+  //NEL CASO DI DATI DALL'ESTERNO
+  // useEffect(() => {
+  //   GET("todos").then((res) => {
+  //     dispatch({ type: "SET_TASKS_LIST", payload: res.todos });
+  //   });
+  // }, []);
+
+  //NEL CASO DI UN MOCK
+
+  // dispatch({ type: "SET_TASKS_LIST", payload: todos });
 
   return (
     <div className={styles.TasksList}>
@@ -20,6 +26,8 @@ const TasksList = () => {
         .map((task) => (
           <Task taskData={task} key={task.id} />
         ))}
+
+      {console.log(todos)}
     </div>
   );
 };

@@ -1,28 +1,37 @@
-import { useState, useEffect, useContext } from "react";
-import { GET } from "../../utils/http";
+import { useContext } from "react";
+// import { GET } from "../../utils/http";
 import { randomHSLA } from "../../utils/funcs";
 import styles from "./index.module.scss";
 import { MdOutlineDone } from "react-icons/md";
 import { Context } from "../../store";
+import { FcFullTrash } from "react-icons/fc";
 
 const Task = ({ taskData }) => {
-  const [userData, setUserData] = useState({});
-  const [complete, setComplete] = useState(taskData.completed);
-  const { state } = useContext(Context);
+  const { dispatch } = useContext(Context);
 
-  useEffect(() => {
-    GET(`users/${taskData.userId}`).then((data) => setUserData(data));
-  }, []);
+  //NEL CASO DI DATI DALL'ESTERNO
+  // useEffect(() => {
+  //   GET(`users/${taskData.userId}`).then((data) => setUserData(data));
+  // }, []);
 
   const onHandleDoneBtn = () => {
-    setComplete(!complete);
+    dispatch({ type: "SET_COMPLETED", payload: taskData.id });
+  };
+
+  const onHandleRemove = () => {
+    dispatch({ type: "REMOVE_ITEM", payload: taskData.id });
   };
 
   return (
     <div className={styles.Task} style={{ background: `${randomHSLA()}` }}>
+      <button className={styles.removeBtn} onClick={onHandleRemove}>
+        <FcFullTrash />
+        <p className={styles.removeText}>Remove</p>
+      </button>
       <div className={styles.info}>
-        <img src={userData.image} alt={userData.username} />
-        {complete ? (
+        <img src={taskData.image} alt={taskData.username} />
+
+        {taskData.completed ? (
           <button onClick={onHandleDoneBtn} className={styles.done}>
             <MdOutlineDone />
           </button>
@@ -31,10 +40,9 @@ const Task = ({ taskData }) => {
         )}
       </div>
       <div className={styles.content}>
-        <span>{userData.username}</span>
+        <span>{taskData.username}</span>
         <p>{taskData.todo}</p>
       </div>
-      {console.log(state)}
     </div>
   );
 };

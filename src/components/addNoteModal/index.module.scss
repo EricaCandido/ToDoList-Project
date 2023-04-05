@@ -10,36 +10,56 @@
     background-color: rgba(59, 45, 58, 0.794);
     height: 100vh;
     width: 100vw;
+    cursor: pointer;
   }
 
   .modalForm {
+    padding: 40px;
+    border-radius: 24px;
+    background-color: rgba(184, 39, 194, 0.54);
     position: fixed;
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    .usernameInput,
     .newNoteInput,
     .uploadBtn {
-      padding: 20px;
+      padding: 10px;
       border: none;
-      border-radius: 42px;
-    }
-
-    .newNoteInput {
+      border-radius: 20px;
+      font-family: "Poppins", sans-serif;
       outline: none;
-      height: 200px;
+    }
+    .usernameInput {
+      width: 200px;
+    }
+    .newNoteInput {
+      height: 150px;
       width: 200px;
     }
     .uploadBtn {
       cursor: pointer;
       background-color: rgb(45, 7, 48);
       color: rgb(234, 234, 234);
-
+      width: 150px;
+      font-weight: bold;
       transition: all 0.35s;
 
       &:hover {
         background-color: rgb(73, 12, 78);
         transform: scale(1.1);
+      }
+    }
+  }
+  @media screen and (max-width: 335px) {
+    .modalForm {
+      .usernameInput {
+        width: 150px;
+      }
+      .newNoteInput {
+        height: 150px;
+        width: 150px;
       }
     }
   }

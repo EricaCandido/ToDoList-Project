@@ -5,6 +5,41 @@
   padding: 16px;
   border-radius: 42px;
   color: rgb(45, 7, 48);
+  position: relative;
+  .removeBtn {
+    position: absolute;
+    bottom: 20px;
+    right: 31.5px;
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.35s;
+    color: white;
+    font-size: 2rem;
+    .removeText {
+      font-size: 0.8rem;
+      color: rgb(45, 7, 48);
+      position: absolute;
+      bottom: 0;
+      right: 12px;
+      opacity: 0;
+      transition: all 0.35s;
+      font-family: "Poppins", sans-serif;
+      width: 25px;
+      color: rgb(45, 7, 48);
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
 
   .info {
     display: flex;

@@ -14,7 +14,7 @@ export const mainReducer = (state, action) => {
     case "MODAL_VISIBLE":
       return {
         ...state,
-        isModalVisibile: true,
+        isModalVisibile: !state.isModalVisibile,
       };
 
     case "MODAL_NOT_VISIBLE":
@@ -23,10 +23,25 @@ export const mainReducer = (state, action) => {
         isModalVisibile: false,
       };
 
-    case "COMPLETED":
+    case "SET_COMPLETED":
       return {
         ...state,
-        tasksListData: [...state.tasksListData, (completed = !completed)],
+        tasksListData: state.tasksListData.map((obj) => {
+          if (obj.id == action.payload)
+            return {
+              ...obj,
+              completed: !obj.completed,
+            };
+          return obj;
+        }),
+      };
+
+    case "REMOVE_ITEM":
+      return {
+        ...state,
+        tasksListData: state.tasksListData.filter(
+          (item) => item.id !== action.payload
+        ),
       };
   }
 };

@@ -28,4 +28,9 @@
       }
     }
   }
+  @media screen and (max-width: 335px) {
+    h1 {
+      font-size: 2rem;
+    }
+  }
 }
