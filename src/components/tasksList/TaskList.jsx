@@ -1,4 +1,4 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../store";
 // import { GET } from "../../utils/http";
 import Task from "../task/Task";
@@ -6,7 +6,7 @@ import styles from "./index.module.scss";
 import { todos } from "../../mocks/todos.json";
 
 const TasksList = () => {
-  const { state, dispatch } = useContext(Context);
+  const { state } = useContext(Context);
 
   //NEL CASO DI DATI DALL'ESTERNO
   // useEffect(() => {
@@ -26,8 +26,6 @@ const TasksList = () => {
         .map((task) => (
           <Task taskData={task} key={task.id} />
         ))}
-
-      {console.log(todos)}
     </div>
   );
 };

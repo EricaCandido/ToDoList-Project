@@ -19,15 +19,15 @@ export const getRandomInt = (max) => {
 };
 
 export const partOfDay = () => {
-  if (new Date().getHours() < 12) {
+  if (new Date().getHours() <= 12) {
     return "Good morning";
   }
 
-  if (new Date().getHours() > 12 && new Date().getHours() < 19) {
+  if (new Date().getHours() >= 12 && new Date().getHours() <= 19) {
     return "Good afternoon";
   }
 
-  if (new Date().getHours() > 21) {
+  if (new Date().getHours() >= 21) {
     return "Good night";
   }
 };
