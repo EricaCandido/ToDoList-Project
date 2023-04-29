@@ -1,5 +1,4 @@
 import { useContext } from "react";
-// import { GET } from "../../utils/http";
 import { randomHSLA } from "../../utils/funcs";
 import styles from "./index.module.scss";
 import { MdOutlineDone } from "react-icons/md";
@@ -8,11 +7,6 @@ import { FcFullTrash } from "react-icons/fc";
 
 const Task = ({ taskData }) => {
   const { dispatch } = useContext(Context);
-
-  //NEL CASO DI DATI DALL'ESTERNO
-  // useEffect(() => {
-  //   GET(`users/${taskData.userId}`).then((data) => setUserData(data));
-  // }, []);
 
   const onHandleDoneBtn = () => {
     dispatch({ type: "SET_COMPLETED", payload: taskData.id });
@@ -30,7 +24,7 @@ const Task = ({ taskData }) => {
       </button>
       <div className={styles.info}>
         <img src={taskData.image} alt={taskData.username} />
-
+        <p className={styles.time}>{taskData.time}</p>
         {taskData.completed ? (
           <button onClick={onHandleDoneBtn} className={styles.done}>
             <MdOutlineDone />

@@ -44,7 +44,9 @@
   .info {
     display: flex;
     justify-content: space-between;
-
+    .time {
+      font-weight: bold;
+    }
     img,
     .done {
       width: 50px;

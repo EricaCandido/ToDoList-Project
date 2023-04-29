@@ -7,6 +7,7 @@ const AddNoteModal = () => {
   const { state, dispatch } = useContext(Context);
   const [inputValue, setInputValue] = useState("");
   const [usernameValue, setusernameValue] = useState("");
+  const [timeValue, setTimeValue] = useState("");
 
   const onHandleSubmit = (e) => {
     e.preventDefault();
@@ -19,6 +20,7 @@ const AddNoteModal = () => {
       payload: {
         id: state.tasksListData.length + 1,
         username: usernameValue,
+        time: timeValue,
         todo: inputValue,
         completed: false,
         userId: getRandomInt(100),
@@ -43,6 +45,13 @@ const AddNoteModal = () => {
           type="text"
           placeholder="Who's writing this note"
           value={usernameValue}
+          required
+        />
+        <input
+          className={styles.usernameInput}
+          onChange={(e) => setTimeValue(e.target.value)}
+          type="time"
+          value={timeValue}
           required
         />
 
